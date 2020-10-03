@@ -27,7 +27,7 @@ class CustomerRepository extends ServiceEntityRepository
         $this->manager = $manager;
     }
 
-    public function saveCustomer($firstName, $lastName, $email, $phoneNumber)
+    public function saveCustomer($firstName, $lastName, $email, $phoneNumber, $address)
     {
         $newCustomer = new Customer();
 
@@ -36,6 +36,7 @@ class CustomerRepository extends ServiceEntityRepository
             ->setLastName($lastName)
             ->setEmail($email)
             ->setPhoneNumber($phoneNumber);
+            ->setPhoneNumber($address);
 
         $this->manager->persist($newCustomer);
         $this->manager->flush();
@@ -47,6 +48,7 @@ class CustomerRepository extends ServiceEntityRepository
         empty($data['lastName']) ? true : $customer->setLastName($data['lastName']);
         empty($data['email']) ? true : $customer->setEmail($data['email']);
         empty($data['phoneNumber']) ? true : $customer->setPhoneNumber($data['phoneNumber']);
+        empty($data['address']) ? true : $customer->setPhoneNumber($data['address']);
 
         $this->manager->flush();
     }
