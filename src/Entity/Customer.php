@@ -35,6 +35,12 @@ class Customer
      * @ORM\Column(type="string", length=255)
      */
     private $phoneNumber;
+    
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $address;
 
     public function getId(): ?int
     {
@@ -85,6 +91,20 @@ class Customer
     public function setPhoneNumber(string $phoneNumber): self
     {
         $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+    
+    
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(string $address): self
+    {
+        $this->address = $address;
 
         return $this;
     }
